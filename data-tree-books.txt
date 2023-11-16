@@ -1,0 +1,20 @@
+﻿1|Cien años de soledad|Una novela de Gabriel García Márquez|Gabriel García Márquez|1967
+2|Don Quijote de la Mancha|Una obra maestra de Miguel de Cervantes|Miguel de Cervantes|1605
+3|Rayuela|Una novela de Julio Cortázar|Julio Cortázar|1963
+4|Pedro Páramo|Una novela de Juan Rulfo|Juan Rulfo|1955
+5|Ficciones|Una colección de cuentos de Jorge Luis Borges|Jorge Luis Borges|1944
+6|La sombra del viento|Una novela de Carlos Ruiz Zafón|Carlos Ruiz Zafón|2001
+7|Cien años de perdón|Una novela de Andrés Trapiello|Andrés Trapiello|1995
+8|La casa de los espíritus|Una novela de Isabel Allende|Isabel Allende|1982
+9|La ciudad y los perros|Una novela de Mario Vargas Llosa|Mario Vargas Llosa|1963
+10|La casa de Bernarda Alba|Una obra de teatro de Federico García Lorca|Federico García Lorca|1936
+11|Ficciones|Una colección de cuentos de Jorge Luis Borges|Jorge Luis Borges|1944
+12|Los detectives salvajes|Una novela de Roberto Bolaño|Roberto Bolaño|1998
+13|Crimen y castigo|Una novela de Fiodor Dostoievski|Fiodor Dostoievski|1866
+14|La tía Julia y el escribidor|Una novela de Mario Vargas Llosa|Mario Vargas Llosa|1977
+15|La casa de los espíritus|Una novela de Isabel Allende|Isabel Allende|1982
+16|La Sombra del Viento|Una novela de Carlos Ruiz Zafón|Carlos Ruiz Zafón|2001
+17|Ficciones|Una colección de cuentos de Jorge Luis Borges|Jorge Luis Borges|1944
+18|Los detectives salvajes|Una novela de Roberto Bolaño|Roberto Bolaño|1998
+19|Cien años de soledad|Una novela de Gabriel García Márquez|Gabriel García Márquez|1967
+20|Don Quijote de la Mancha|Una obra maestra de Miguel de Cervantes|Miguel de Cervantes|1605872|Pedor se v aa su casas|la vida de pedro|Juan perez|2020

@@ -119,6 +119,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data-tree-books.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="users.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
