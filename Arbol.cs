@@ -83,8 +83,7 @@ namespace Gestor_De_Biblioteca_T3
                 }
             }
         }
-
-
+        
         public void Insert(ref NodoArbol r, Book dato)
         {
             if (r == null)
@@ -94,34 +93,13 @@ namespace Gestor_De_Biblioteca_T3
             else
             {
                 //comparación del dato que quiero referenciar
-                if (String.Compare(dato.Id, r.dato.Id, StringComparison.Ordinal) > 0) //Si es mayor
+                if (String.Compare(dato.Title, r.dato.Title, StringComparison.Ordinal) > 0) //Si es mayor
                     Insert(ref r.der, dato);
-                else if (String.Compare(dato.Id, r.dato.Id, StringComparison.Ordinal) < 0) //si es menor
+                else if (String.Compare(dato.Title, r.dato.Title, StringComparison.Ordinal) < 0) //si es menor
                     Insert(ref r.izq, dato);
                 else
                     MessageBox.Show("Elemento duplicado");
             }
-        }
-
-        public Book SearchByAuthor(string value)
-        {
-            return this.SearchByAuthor(value, raiz);
-        }
-
-        public Book SearchByAuthor(string value, NodoArbol r)
-        {
-            Book em = null;
-            if (r != null)
-            {
-                em = r.dato;
-                if (value.Contains(em.Author)) return em;
-                if (string.Compare(value, em.Author, StringComparison.OrdinalIgnoreCase) < 0)
-                    return SearchByAuthor(value, r.izq);
-                else
-                    return SearchByAuthor(value, r.der);
-            }
-
-            return em;
         }
 
         public Book SearchByTitle(string value)
@@ -135,7 +113,7 @@ namespace Gestor_De_Biblioteca_T3
             if (r != null)
             {
                 em = r.dato;
-                if (value.Contains(em.Author)) return em;
+                if (value.Contains(em.Title)) return em;
                 if (string.Compare(value, em.Title, StringComparison.OrdinalIgnoreCase) < 0)
                     return SearchByTitle(value, r.izq);
                 else

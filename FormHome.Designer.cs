@@ -45,6 +45,8 @@ namespace Gestor_De_Biblioteca_T3
             this.btnAddBook = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.searchBook = new System.Windows.Forms.Button();
+            this.inputTitleSearch = new System.Windows.Forms.TextBox();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.genderLabel = new System.Windows.Forms.Label();
             this.publisherLabel = new System.Windows.Forms.Label();
@@ -58,10 +60,6 @@ namespace Gestor_De_Biblioteca_T3
             this.TitleBookLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reservesDGV = new System.Windows.Forms.DataGridView();
             this.idlb = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbnombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +67,8 @@ namespace Gestor_De_Biblioteca_T3
             this.lbdevolucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BooksDGV)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -96,13 +96,15 @@ namespace Gestor_De_Biblioteca_T3
             // 
             // BooksDGV
             // 
+            this.BooksDGV.AllowUserToAddRows = false;
+            this.BooksDGV.AllowUserToDeleteRows = false;
             this.BooksDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.BooksDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BooksDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.id, this.Titulo, this.Descripcion, this.Autor, this.Publicacion, this.Reservar });
-            this.BooksDGV.Location = new System.Drawing.Point(6, 6);
+            this.BooksDGV.Location = new System.Drawing.Point(6, 41);
             this.BooksDGV.Name = "BooksDGV";
             this.BooksDGV.ReadOnly = true;
-            this.BooksDGV.Size = new System.Drawing.Size(335, 448);
+            this.BooksDGV.Size = new System.Drawing.Size(335, 413);
             this.BooksDGV.TabIndex = 6;
             this.BooksDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -192,6 +194,8 @@ namespace Gestor_De_Biblioteca_T3
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.searchBook);
+            this.tabPage1.Controls.Add(this.inputTitleSearch);
             this.tabPage1.Controls.Add(this.descriptionLabel);
             this.tabPage1.Controls.Add(this.genderLabel);
             this.tabPage1.Controls.Add(this.publisherLabel);
@@ -215,55 +219,73 @@ namespace Gestor_De_Biblioteca_T3
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // searchBook
+            // 
+            this.searchBook.Location = new System.Drawing.Point(281, 15);
+            this.searchBook.Name = "searchBook";
+            this.searchBook.Size = new System.Drawing.Size(59, 19);
+            this.searchBook.TabIndex = 20;
+            this.searchBook.Text = "Buscar";
+            this.searchBook.UseVisualStyleBackColor = true;
+            this.searchBook.Click += new System.EventHandler(this.searchBook_Click);
+            // 
+            // inputTitleSearch
+            // 
+            this.inputTitleSearch.Location = new System.Drawing.Point(7, 15);
+            this.inputTitleSearch.Name = "inputTitleSearch";
+            this.inputTitleSearch.Size = new System.Drawing.Size(268, 20);
+            this.inputTitleSearch.TabIndex = 19;
+            // 
             // descriptionLabel
             // 
             this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLabel.Location = new System.Drawing.Point(539, 148);
+            this.descriptionLabel.Location = new System.Drawing.Point(539, 184);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(334, 181);
+            this.descriptionLabel.Size = new System.Drawing.Size(374, 181);
             this.descriptionLabel.TabIndex = 18;
             // 
             // genderLabel
             // 
             this.genderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderLabel.Location = new System.Drawing.Point(613, 98);
+            this.genderLabel.Location = new System.Drawing.Point(613, 134);
             this.genderLabel.Name = "genderLabel";
-            this.genderLabel.Size = new System.Drawing.Size(100, 23);
+            this.genderLabel.Size = new System.Drawing.Size(212, 23);
             this.genderLabel.TabIndex = 17;
             this.genderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // publisherLabel
             // 
             this.publisherLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.publisherLabel.Location = new System.Drawing.Point(645, 77);
+            this.publisherLabel.Location = new System.Drawing.Point(645, 113);
             this.publisherLabel.Name = "publisherLabel";
-            this.publisherLabel.Size = new System.Drawing.Size(100, 19);
+            this.publisherLabel.Size = new System.Drawing.Size(228, 19);
             this.publisherLabel.TabIndex = 16;
             this.publisherLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // authorLabel
             // 
             this.authorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.authorLabel.Location = new System.Drawing.Point(603, 52);
+            this.authorLabel.Location = new System.Drawing.Point(603, 88);
             this.authorLabel.Name = "authorLabel";
-            this.authorLabel.Size = new System.Drawing.Size(100, 23);
+            this.authorLabel.Size = new System.Drawing.Size(257, 23);
             this.authorLabel.TabIndex = 15;
             this.authorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ReserveBtn
             // 
             this.ReserveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReserveBtn.Location = new System.Drawing.Point(538, 332);
+            this.ReserveBtn.Location = new System.Drawing.Point(538, 368);
             this.ReserveBtn.Name = "ReserveBtn";
             this.ReserveBtn.Size = new System.Drawing.Size(126, 35);
             this.ReserveBtn.TabIndex = 14;
             this.ReserveBtn.Text = "Reservar";
             this.ReserveBtn.UseVisualStyleBackColor = true;
+            this.ReserveBtn.Click += new System.EventHandler(this.ReserveBtn_Click);
             // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(538, 125);
+            this.label7.Location = new System.Drawing.Point(538, 161);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 23);
             this.label7.TabIndex = 13;
@@ -272,7 +294,7 @@ namespace Gestor_De_Biblioteca_T3
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(538, 102);
+            this.label6.Location = new System.Drawing.Point(538, 138);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 23);
             this.label6.TabIndex = 12;
@@ -281,7 +303,7 @@ namespace Gestor_De_Biblioteca_T3
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(538, 79);
+            this.label5.Location = new System.Drawing.Point(538, 115);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 23);
             this.label5.TabIndex = 11;
@@ -290,7 +312,7 @@ namespace Gestor_De_Biblioteca_T3
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(538, 56);
+            this.label2.Location = new System.Drawing.Point(538, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 23);
             this.label2.TabIndex = 10;
@@ -298,7 +320,7 @@ namespace Gestor_De_Biblioteca_T3
             // 
             // bookImage
             // 
-            this.bookImage.Location = new System.Drawing.Point(347, 51);
+            this.bookImage.Location = new System.Drawing.Point(347, 87);
             this.bookImage.Name = "bookImage";
             this.bookImage.Size = new System.Drawing.Size(181, 316);
             this.bookImage.TabIndex = 9;
@@ -307,7 +329,7 @@ namespace Gestor_De_Biblioteca_T3
             // TitleBookLabel
             // 
             this.TitleBookLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleBookLabel.Location = new System.Drawing.Point(347, 6);
+            this.TitleBookLabel.Location = new System.Drawing.Point(347, 42);
             this.TitleBookLabel.Name = "TitleBookLabel";
             this.TitleBookLabel.Size = new System.Drawing.Size(538, 29);
             this.TitleBookLabel.TabIndex = 8;
@@ -328,79 +350,84 @@ namespace Gestor_De_Biblioteca_T3
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.dataGridViewTextBoxColumn1, this.dataGridViewTextBoxColumn2, this.dataGridViewTextBoxColumn3, this.dataGridViewTextBoxColumn4 });
-            this.dataGridView2.Location = new System.Drawing.Point(438, 37);
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.dataGridViewTextBoxColumn1, this.dataGridViewTextBoxColumn2 });
+            this.dataGridView2.Location = new System.Drawing.Point(468, 37);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(372, 379);
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.Size = new System.Drawing.Size(445, 379);
             this.dataGridView2.TabIndex = 8;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "TITULO";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "FECHA DE RESERVA";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "FECHA DE DEVOLUCION";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // reservesDGV
             // 
+            this.reservesDGV.AllowUserToAddRows = false;
+            this.reservesDGV.AllowUserToDeleteRows = false;
             this.reservesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.reservesDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.idlb, this.lbnombre, this.lbreserva, this.lbdevolucion });
             this.reservesDGV.Location = new System.Drawing.Point(7, 37);
             this.reservesDGV.Name = "reservesDGV";
-            this.reservesDGV.Size = new System.Drawing.Size(397, 379);
+            this.reservesDGV.ReadOnly = true;
+            this.reservesDGV.Size = new System.Drawing.Size(443, 379);
             this.reservesDGV.TabIndex = 7;
             // 
             // idlb
             // 
             this.idlb.HeaderText = "ID";
             this.idlb.Name = "idlb";
+            this.idlb.ReadOnly = true;
             // 
             // lbnombre
             // 
             this.lbnombre.HeaderText = "TITULO";
             this.lbnombre.Name = "lbnombre";
+            this.lbnombre.ReadOnly = true;
             // 
             // lbreserva
             // 
             this.lbreserva.HeaderText = "FECHA DE RESERVA";
             this.lbreserva.Name = "lbreserva";
+            this.lbreserva.ReadOnly = true;
             // 
             // lbdevolucion
             // 
             this.lbdevolucion.HeaderText = "FECHA DE DEVOLUCION";
             this.lbdevolucion.Name = "lbdevolucion";
+            this.lbdevolucion.ReadOnly = true;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(438, 12);
+            this.label3.Location = new System.Drawing.Point(468, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 22);
+            this.label3.Size = new System.Drawing.Size(114, 22);
             this.label3.TabIndex = 6;
             this.label3.Text = "Registro";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(7, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 22);
+            this.label4.Size = new System.Drawing.Size(114, 22);
             this.label4.TabIndex = 5;
             this.label4.Text = "Reservas";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Fecha";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Mensaje";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // FormHome
             // 
@@ -415,12 +442,16 @@ namespace Gestor_De_Biblioteca_T3
             ((System.ComponentModel.ISupportInitialize)(this.BooksDGV)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookImage)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservesDGV)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.TextBox inputTitleSearch;
+        private System.Windows.Forms.Button searchBook;
 
         private System.Windows.Forms.Label authorLabel;
         private System.Windows.Forms.Label publisherLabel;
@@ -442,8 +473,6 @@ namespace Gestor_De_Biblioteca_T3
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridView reservesDGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn idlb;
         private System.Windows.Forms.DataGridViewTextBoxColumn lbnombre;

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
+using System.Net;
 using System.Windows.Forms;
 
 namespace Gestor_De_Biblioteca_T3
@@ -40,36 +42,34 @@ namespace Gestor_De_Biblioteca_T3
 
             SelectedBook = new Book(id, title, description, author, publication);
             
-            if (e.ColumnIndex == BooksDGV.Columns["Reservar"].Index)
+            string imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Cien_a%C3%B1os_de_soledad.png/220px-Cien_a%C3%B1os_de_soledad.png";
+
+            // Descargar la imagen desde la URL
+            try
             {
-                FormReserveBook formReserveBook = new FormReserveBook(SelectedBook);
-            
-                DialogResult result = formReserveBook.ShowDialog();
-                
-                if (result == DialogResult.OK)
+                WebClient webClient = new WebClient();
+                byte[] data = webClient.DownloadData(imageUrl);
+                webClient.Dispose();
+
+                // Crear un flujo de memoria desde los datos descargados
+                using (MemoryStream stream = new MemoryStream(data))
                 {
-                    // El usuario hizo clic en "Aceptar" en Form2
-                    Reserve valorRetornado = formReserveBook.reserve;
-                    ReserveManager.CurrentReserves.Encolar(valorRetornado);
-                    reservesDGV.Rows.Clear();
-                    ReserveManager.CurrentReserves.MostrarDGV(reservesDGV);
-                }
-                else
-                {
-                    // El usuario canceló la operación en Form2
-                    label1.Text = "Operación cancelada desde Form2.";
+                    // Crear un objeto de imagen desde el flujo de memoria
+                    Image image = Image.FromStream(stream);
+
+                    TitleBookLabel.Text = SelectedBook.Title;
+                    authorLabel.Text = SelectedBook.Author;
+                    publisherLabel.Text = SelectedBook.Publication;
+                    descriptionLabel.Text = SelectedBook.Description;
+                    bookImage.Image = image;
+                    bookImage.SizeMode = PictureBoxSizeMode.Zoom;
+                    // Asignar la imagen al PictureBox
+                    bookImage.Image = image;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                
-                TitleBookLabel.Text = SelectedBook.Title;
-                authorLabel.Text = SelectedBook.Author;
-                publisherLabel.Text = SelectedBook.Publication;
-                descriptionLabel.Text = SelectedBook.Description;
-                Image imagen = Image.FromFile(@"C:\Users\AXEL\Pictures\Por-que-Shinji-no-envejece-en-Evangelion-min.png");
-                bookImage.Image = imagen;
-                bookImage.SizeMode = PictureBoxSizeMode.Zoom;
+                MessageBox.Show("Error al cargar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -97,7 +97,79 @@ namespace Gestor_De_Biblioteca_T3
 
         private void ReserveBtn_Click(object sender, EventArgs e)
         {
+            FormReserveBook formReserveBook = new FormReserveBook(SelectedBook);
+            
+            DialogResult result = formReserveBook.ShowDialog();
+                
+            if (result == DialogResult.OK)
+            {
+                // El usuario hizo clic en "Aceptar" en Form2
+                Reserve valorRetornado = formReserveBook.reserve;
+                ReserveManager.CurrentReserves.Encolar(valorRetornado);
+                reservesDGV.Rows.Clear();
+                ReserveManager.CurrentReserves.MostrarDGV(reservesDGV);
+            }
+            else
+            {
+                // El usuario canceló la operación en Form2
+                label1.Text = "Operación cancelada desde Form2.";
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
             throw new System.NotImplementedException();
+        }
+
+        private void searchBook_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(inputTitleSearch.Text))
+            {
+                MessageBox.Show("Debe ingresar el nombre de un libro");
+            }
+            else
+            {
+                Book book = books.SearchByTitle(inputTitleSearch.Text);
+
+                if (book == null)
+                {
+                    MessageBox.Show("No se encontro el libro");
+                    return;
+                }
+                
+                MessageBox.Show($"Se encontro el libro {book.Title}");
+                string imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Cien_a%C3%B1os_de_soledad.png/220px-Cien_a%C3%B1os_de_soledad.png";
+
+                // Descargar la imagen desde la URL
+                try
+                {
+                    WebClient webClient = new WebClient();
+                    byte[] data = webClient.DownloadData(imageUrl);
+                    webClient.Dispose();
+
+                    // Crear un flujo de memoria desde los datos descargados
+                    using (MemoryStream stream = new MemoryStream(data))
+                    {
+                        // Crear un objeto de imagen desde el flujo de memoria
+                        Image image = Image.FromStream(stream);
+
+                        TitleBookLabel.Text = book.Title;
+                        authorLabel.Text = book.Author;
+                        publisherLabel.Text = book.Publication;
+                        descriptionLabel.Text = book.Description;
+                        bookImage.Image = image;
+                        bookImage.SizeMode = PictureBoxSizeMode.Zoom;
+                        // Asignar la imagen al PictureBox
+                        bookImage.Image = image;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
+            
         }
     }
 }
