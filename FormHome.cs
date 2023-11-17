@@ -185,6 +185,7 @@ namespace Gestor_De_Biblioteca_T3
                         bookImage.SizeMode = PictureBoxSizeMode.Zoom;
                         // Asignar la imagen al PictureBox
                         bookImage.Image = image;
+                        SelectedBook = book;
                     }
                     Registro log = new Registro($"Se reservo un libro: {inputTitleSearch.Text} SE ENCONTRO CORRECTAMENTE");
                     registro.InsertarAlFinal(log);
