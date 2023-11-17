@@ -163,13 +163,12 @@ namespace Gestor_De_Biblioteca_T3
                 }
                 
                 MessageBox.Show($"Se encontro el libro {book.Title}");
-                string imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Cien_a%C3%B1os_de_soledad.png/220px-Cien_a%C3%B1os_de_soledad.png";
 
                 // Descargar la imagen desde la URL
                 try
                 {
                     WebClient webClient = new WebClient();
-                    byte[] data = webClient.DownloadData(imageUrl);
+                    byte[] data = webClient.DownloadData(book.Cover);
                     webClient.Dispose();
 
                     // Crear un flujo de memoria desde los datos descargados
