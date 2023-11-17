@@ -3,11 +3,11 @@
     public class Reserve
     {
         public string id;
-        public Book book;
+        public string book;
         public string dateOfReturn;
         public string dateofBooking;
 
-        public Reserve(string id, Book book, string dateOfReturn, string dateofBooking)
+        public Reserve(string id, string book, string dateOfReturn, string dateofBooking)
         {
             this.id = id;
             this.book = book;

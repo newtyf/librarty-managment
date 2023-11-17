@@ -1,13 +1,13 @@
-﻿1|Cien años de soledad|Una novela de Gabriel García Márquez|Gabriel García Márquez|1967
-2|Don Quijote de la Mancha|Una obra maestra de Miguel de Cervantes|Miguel de Cervantes|1605
-3|Rayuela|Una novela de Julio Cortázar|Julio Cortázar|1963
-4|Pedro Páramo|Una novela de Juan Rulfo|Juan Rulfo|1955
-5|Ficciones|Una colección de cuentos de Jorge Luis Borges|Jorge Luis Borges|1944
-6|La sombra del viento|Una novela de Carlos Ruiz Zafón|Carlos Ruiz Zafón|2001
-7|Cien años de perdón|Una novela de Andrés Trapiello|Andrés Trapiello|1995
-8|La casa de los espíritus|Una novela de Isabel Allende|Isabel Allende|1982
-9|La ciudad y los perros|Una novela de Mario Vargas Llosa|Mario Vargas Llosa|1963
-10|La casa de Bernarda Alba|Una obra de teatro de Federico García Lorca|Federico García Lorca|1936
-12|Los detectives salvajes|Una novela de Roberto Bolaño|Roberto Bolaño|1998
-13|Crimen y castigo|Una novela de Fiodor Dostoievski|Fiodor Dostoievski|1866
-14|La tía Julia y el escribidor|Una novela de Mario Vargas Llosa|Mario Vargas Llosa|1977
+﻿1|Cien años de soledad|Una novela de Gabriel García Márquez|Gabriel García Márquez|1967|https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Cien_a%C3%B1os_de_soledad.png/220px-Cien_a%C3%B1os_de_soledad.png|Novela
+2|Don Quijote de la Mancha|Una obra maestra de Miguel de Cervantes|Miguel de Cervantes|1605|https://upload.wikimedia.org/wikipedia/commons/d/d8/El_ingenioso_hidalgo_don_Quijote_de_la_Mancha.jpg|Novela
+3|Rayuela|Una novela de Julio Cortázar|Julio Cortázar|1963|https://educacion.ufm.edu/wp-content/uploads/2013/07/Rayuela.jpg|Novela
+4|Pedro Páramo|Una novela de Juan Rulfo|Juan Rulfo|1955|https://www.funeralnatural.net/sites/default/files/libro/imagen/pedroparamo.jpg|Novela
+5|Ficciones|Una colección de cuentos de Jorge Luis Borges|Jorge Luis Borges|1944|https://upload.wikimedia.org/wikipedia/commons/d/de/Ficciones_%281944%29.jpg|Cuentos
+6|La sombra del viento|Una novela de Carlos Ruiz Zafón|Carlos Ruiz Zafón|2001|https://m.media-amazon.com/images/I/51Ty5FOq4kL.jpg|Novela
+7|Cien años de perdón|Una novela de Andrés Trapiello|Andrés Trapiello|1995|https://www.aceprensa.com/wp-content/uploads/2001/07/Madrid-1945-scaled.jpg|Novela
+8|La casa de los espíritus|Una novela de Isabel Allende|Isabel Allende|1982|https://www.crisol.com.pe/media/catalog/product/cache/cf84e6047db2ba7f2d5c381080c69ffe/9/7/9789500767767_ubzsvunvtrsxlqxj.jpg|Novela
+9|La ciudad y los perros|Una novela de Mario Vargas Llosa|Mario Vargas Llosa|1963|https://3.bp.blogspot.com/-ByicL2AZTmA/Vl-Js1cdIWI/AAAAAAAACEI/ouXaDoKRTbM/s1600/08.%2BLos%2Bdetectives%2Bsalvajes%2Bespa%25C3%25B1ol.jpg|Novela
+10|La casa de Bernarda Alba|Una obra de teatro de Federico García Lorca|Federico García Lorca|1936|https://www.crisol.com.pe/media/catalog/product/cache/cf84e6047db2ba7f2d5c381080c69ffe/5/4/545308_imagen_tapa_g_002_n95cqvd0ofv4asmz.jpg|Teatro
+12|Los detectives salvajes|Una novela de Roberto Bolaño|Roberto Bolaño|1998|https://global-uploads.webflow.com/6034d7d1f3e0f52c50b2adee/6254541d8ae4df16d4e69bc8_6034d7d1f3e0f54529b2b1a1_Crimen-y-castigo-fiodor-dostoyevski-editorial-alma.jpeg|Novela
+13|Crimen y castigo|Una novela de Fiodor Dostoievski|Fiodor Dostoievski|1866|https://global-uploads.webflow.com/6034d7d1f3e0f52c50b2adee/6254541d8ae4df16d4e69bc8_6034d7d1f3e0f54529b2b1a1_Crimen-y-castigo-fiodor-dostoyevski-editorial-alma.jpeg|Novela
+14|La tía Julia y el escribidor|Una novela de Mario Vargas Llosa|Mario Vargas Llosa|1977|https://www.crisol.com.pe/media/catalog/product/cache/f6d2c62455a42b0d712f6c919e880845/9/7/9786124349713_getiv8ikzuo1ggrm.jpg|Novela

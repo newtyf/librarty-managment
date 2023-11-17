@@ -41,7 +41,7 @@ namespace Gestor_De_Biblioteca_T3
             }
 
             int cant = ReserveManager.CurrentReserves.ContarNodos();
-            reserve = new Reserve((cant + 1).ToString(), _book, fechaSeleccionadaDevolucion.ToString(),
+            reserve = new Reserve((cant + 1).ToString(), _book.Title, fechaSeleccionadaDevolucion.ToString(),
                 fechaSeleccionadaReservacion.ToString());
             DialogResult = DialogResult.OK;
             Close();

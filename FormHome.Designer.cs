@@ -41,6 +41,8 @@ namespace Gestor_De_Biblioteca_T3
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Publicacion = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Cover = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reservar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnAddBook = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -59,7 +61,9 @@ namespace Gestor_De_Biblioteca_T3
             this.bookImage = new System.Windows.Forms.PictureBox();
             this.TitleBookLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.registerDGV = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reservesDGV = new System.Windows.Forms.DataGridView();
             this.idlb = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbnombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,14 +71,12 @@ namespace Gestor_De_Biblioteca_T3
             this.lbdevolucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BooksDGV)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookImage)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.registerDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservesDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +102,7 @@ namespace Gestor_De_Biblioteca_T3
             this.BooksDGV.AllowUserToDeleteRows = false;
             this.BooksDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.BooksDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.BooksDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.id, this.Titulo, this.Descripcion, this.Autor, this.Publicacion, this.Reservar });
+            this.BooksDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.id, this.Titulo, this.Descripcion, this.Autor, this.Publicacion, this.Cover, this.Genero, this.Reservar });
             this.BooksDGV.Location = new System.Drawing.Point(6, 41);
             this.BooksDGV.Name = "BooksDGV";
             this.BooksDGV.ReadOnly = true;
@@ -159,6 +161,21 @@ namespace Gestor_De_Biblioteca_T3
             this.Publicacion.ReadOnly = true;
             this.Publicacion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Publicacion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Cover
+            // 
+            this.Cover.HeaderText = "Cover";
+            this.Cover.Name = "Cover";
+            this.Cover.ReadOnly = true;
+            this.Cover.Visible = false;
+            this.Cover.Width = 60;
+            // 
+            // Genero
+            // 
+            this.Genero.HeaderText = "Genero";
+            this.Genero.Name = "Genero";
+            this.Genero.ReadOnly = true;
+            this.Genero.Width = 67;
             // 
             // Reservar
             // 
@@ -336,7 +353,7 @@ namespace Gestor_De_Biblioteca_T3
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.registerDGV);
             this.tabPage2.Controls.Add(this.reservesDGV);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label4);
@@ -348,19 +365,34 @@ namespace Gestor_De_Biblioteca_T3
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // registerDGV
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.dataGridViewTextBoxColumn1, this.dataGridViewTextBoxColumn2 });
-            this.dataGridView2.Location = new System.Drawing.Point(468, 37);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(445, 379);
-            this.dataGridView2.TabIndex = 8;
+            this.registerDGV.AllowUserToAddRows = false;
+            this.registerDGV.AllowUserToDeleteRows = false;
+            this.registerDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.registerDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.registerDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.registerDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.dataGridViewTextBoxColumn1, this.dataGridViewTextBoxColumn2 });
+            this.registerDGV.Location = new System.Drawing.Point(468, 37);
+            this.registerDGV.Name = "registerDGV";
+            this.registerDGV.ReadOnly = true;
+            this.registerDGV.Size = new System.Drawing.Size(445, 379);
+            this.registerDGV.TabIndex = 8;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Fecha";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 62;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Mensaje";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // reservesDGV
             // 
@@ -376,24 +408,29 @@ namespace Gestor_De_Biblioteca_T3
             // 
             // idlb
             // 
+            this.idlb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.idlb.HeaderText = "ID";
             this.idlb.Name = "idlb";
             this.idlb.ReadOnly = true;
+            this.idlb.Width = 43;
             // 
             // lbnombre
             // 
+            this.lbnombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.lbnombre.HeaderText = "TITULO";
             this.lbnombre.Name = "lbnombre";
             this.lbnombre.ReadOnly = true;
             // 
             // lbreserva
             // 
+            this.lbreserva.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.lbreserva.HeaderText = "FECHA DE RESERVA";
             this.lbreserva.Name = "lbreserva";
             this.lbreserva.ReadOnly = true;
             // 
             // lbdevolucion
             // 
+            this.lbdevolucion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.lbdevolucion.HeaderText = "FECHA DE DEVOLUCION";
             this.lbdevolucion.Name = "lbdevolucion";
             this.lbdevolucion.ReadOnly = true;
@@ -417,24 +454,12 @@ namespace Gestor_De_Biblioteca_T3
             this.label4.TabIndex = 5;
             this.label4.Text = "Reservas";
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Fecha";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Mensaje";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(930, 532);
+            this.ClientSize = new System.Drawing.Size(929, 532);
             this.Controls.Add(this.tabControl1);
             this.Location = new System.Drawing.Point(15, 15);
             this.Name = "FormHome";
@@ -445,10 +470,14 @@ namespace Gestor_De_Biblioteca_T3
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookImage)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.registerDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservesDGV)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cover;
 
         private System.Windows.Forms.TextBox inputTitleSearch;
         private System.Windows.Forms.Button searchBook;
@@ -470,7 +499,7 @@ namespace Gestor_De_Biblioteca_T3
         private System.Windows.Forms.Label TitleBookLabel;
         private System.Windows.Forms.PictureBox bookImage;
 
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView registerDGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridView reservesDGV;

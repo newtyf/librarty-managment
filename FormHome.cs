@@ -12,6 +12,8 @@ namespace Gestor_De_Biblioteca_T3
         private User user;
         private Arbol books;
         private Book SelectedBook;
+
+        private Lista registro;
         public FormHome()
         {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace Gestor_De_Biblioteca_T3
         {
             user = UserManager.CurrentUser;
             books = BookManager.CurrentBooks;
+            registro = RegistroManager.CurrentRegister;
 
             tabPage1.Text = "Inicio";
             tabPage2.Text = "Reservas";
@@ -28,8 +31,15 @@ namespace Gestor_De_Biblioteca_T3
             userLabel.Text = user.name;
             
             books.ChargeData();
+            ReserveManager.CurrentReserves.ChargeData();
+            registro.ChargeData();
+            
+            reservesDGV.Rows.Clear();
             BooksDGV.Rows.Clear();
+            registerDGV.Rows.Clear();
             books.PostOrden(books.raiz, BooksDGV);
+            ReserveManager.CurrentReserves.MostrarDGV(reservesDGV);
+            registro.imprimirDGV(registerDGV);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -39,16 +49,16 @@ namespace Gestor_De_Biblioteca_T3
             string description = BooksDGV.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
             string author = BooksDGV.Rows[e.RowIndex].Cells["Autor"].Value.ToString();
             string publication = BooksDGV.Rows[e.RowIndex].Cells["Publicacion"].Value.ToString();
+            string cover = BooksDGV.Rows[e.RowIndex].Cells["Cover"].Value.ToString();
+            string gender = BooksDGV.Rows[e.RowIndex].Cells["Genero"].Value.ToString();
 
-            SelectedBook = new Book(id, title, description, author, publication);
-            
-            string imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Cien_a%C3%B1os_de_soledad.png/220px-Cien_a%C3%B1os_de_soledad.png";
+            SelectedBook = new Book(id, title, description, author, publication, cover, gender);
 
             // Descargar la imagen desde la URL
             try
             {
                 WebClient webClient = new WebClient();
-                byte[] data = webClient.DownloadData(imageUrl);
+                byte[] data = webClient.DownloadData(cover);
                 webClient.Dispose();
 
                 // Crear un flujo de memoria desde los datos descargados
@@ -61,8 +71,9 @@ namespace Gestor_De_Biblioteca_T3
                     authorLabel.Text = SelectedBook.Author;
                     publisherLabel.Text = SelectedBook.Publication;
                     descriptionLabel.Text = SelectedBook.Description;
+                    genderLabel.Text = SelectedBook.Gender;
                     bookImage.Image = image;
-                    bookImage.SizeMode = PictureBoxSizeMode.Zoom;
+                    bookImage.SizeMode = PictureBoxSizeMode.StretchImage;
                     // Asignar la imagen al PictureBox
                     bookImage.Image = image;
                 }
@@ -75,7 +86,7 @@ namespace Gestor_De_Biblioteca_T3
 
         private void btnAddBook_Click(object sender, EventArgs e)
         {
-            FormAgregarBook formAgregarBook = new FormAgregarBook();
+            FormAgregarBook formAgregarBook = new FormAgregarBook(books.size);
 
             DialogResult result = formAgregarBook.ShowDialog();
 
@@ -87,6 +98,10 @@ namespace Gestor_De_Biblioteca_T3
                 books.SaveInPlaneFile(valorRetornado);
                 BooksDGV.Rows.Clear();
                 books.PostOrden(books.raiz, BooksDGV);
+                Registro log = new Registro($"Se agrego el libro: {valorRetornado.Title}");
+                registro.InsertarAlFinal(log);
+                registro.SaveInPlaneFile(log);
+                registro.imprimirDGV(registerDGV);
             }
             else
             {
@@ -108,6 +123,11 @@ namespace Gestor_De_Biblioteca_T3
                 ReserveManager.CurrentReserves.Encolar(valorRetornado);
                 reservesDGV.Rows.Clear();
                 ReserveManager.CurrentReserves.MostrarDGV(reservesDGV);
+                ReserveManager.CurrentReserves.SaveInPlaneFile(valorRetornado);
+                Registro log = new Registro($"Se reservo un libro: {valorRetornado.book}");
+                registro.InsertarAlFinal(log);
+                registro.SaveInPlaneFile(log);
+                registro.imprimirDGV(registerDGV);
             }
             else
             {
@@ -123,6 +143,7 @@ namespace Gestor_De_Biblioteca_T3
 
         private void searchBook_Click(object sender, EventArgs e)
         {
+            
             if (string.IsNullOrEmpty(inputTitleSearch.Text))
             {
                 MessageBox.Show("Debe ingresar el nombre de un libro");
@@ -133,6 +154,10 @@ namespace Gestor_De_Biblioteca_T3
 
                 if (book == null)
                 {
+                    Registro log = new Registro($"Se reservo un libro: {inputTitleSearch.Text} ALERT: NO SE ENCONTRO");
+                    registro.InsertarAlFinal(log);
+                    registro.SaveInPlaneFile(log);
+                    registro.imprimirDGV(registerDGV);
                     MessageBox.Show("No se encontro el libro");
                     return;
                 }
@@ -162,6 +187,10 @@ namespace Gestor_De_Biblioteca_T3
                         // Asignar la imagen al PictureBox
                         bookImage.Image = image;
                     }
+                    Registro log = new Registro($"Se reservo un libro: {inputTitleSearch.Text} SE ENCONTRO CORRECTAMENTE");
+                    registro.InsertarAlFinal(log);
+                    registro.SaveInPlaneFile(log);
+                    registro.imprimirDGV(registerDGV);
                 }
                 catch (Exception ex)
                 {

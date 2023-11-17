@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Gestor_De_Biblioteca_T3
@@ -7,6 +8,78 @@ namespace Gestor_De_Biblioteca_T3
     {
         public NodoCola primero;
         public NodoCola ultimo;
+
+        private string filePath = "reserves.txt";
+
+        public void ChargeData()
+        {
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = File.OpenText(filePath))
+                {
+                    string linea;
+                    while ((linea = sr.ReadLine()) != null)
+                    {
+                        string[] dato = linea.Split('|');
+                        this.Encolar(
+                            new Reserve(
+                                dato[0],
+                                dato[1],
+                                dato[2],
+                                dato[3]
+                            ));
+                    }
+                }
+            }
+        }
+
+        public void SaveInPlaneFile(Reserve dato)
+        {
+            using (StreamWriter sw = File.AppendText(filePath))
+            {
+                sw.WriteLine(
+                    $"{dato.id}|{dato.book}|{dato.dateOfReturn}|{dato.dateofBooking}");
+            }
+        }
+
+        public void DeleteInPlaneFile(string datoAEliminar)
+        {
+            if (File.Exists(filePath))
+            {
+                string[] lines = File.ReadAllLines(filePath);
+                int numLineaAEliminar = -1;
+
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    if (lines[i].Contains(datoAEliminar))
+                    {
+                        numLineaAEliminar = i;
+                        break;
+                    }
+                }
+
+                if (numLineaAEliminar >= 0)
+                {
+                    string[] newLines = new string[lines.Length - 1];
+                    for (int i = 0, j = 0; i < lines.Length; i++)
+                    {
+                        if (i != numLineaAEliminar)
+                        {
+                            newLines[j] = lines[i];
+                            j++;
+                        }
+                    }
+
+                    // Escribir el contenido actualizado en el archivo
+                    File.WriteAllLines(filePath, newLines);
+                }
+                else
+                {
+                    Console.WriteLine("No se encontró el dato específico en ninguna línea.");
+                }
+            }
+        }
+
 
         public Cola()
         {
@@ -31,9 +104,8 @@ namespace Gestor_De_Biblioteca_T3
                 aux.atras = ultimo;
                 ultimo = aux;
             }
-
         }
-        
+
         public int ContarNodos()
         {
             int cant = 0;
@@ -45,6 +117,7 @@ namespace Gestor_De_Biblioteca_T3
                 cant++;
                 puntero = puntero.siguiente;
             }
+
             return cant;
         }
 
@@ -61,6 +134,7 @@ namespace Gestor_De_Biblioteca_T3
                 valor = primero.dato;
                 primero = primero.siguiente;
             }
+
             return valor;
         }
 
@@ -81,12 +155,10 @@ namespace Gestor_De_Biblioteca_T3
                 {
                     id++;
                     Reserve dato = puntero.dato;
-                    DGV.Rows.Add(dato.id, dato.book.Title, dato.dateofBooking, dato.dateOfReturn);
+                    DGV.Rows.Add(dato.id, dato.book, dato.dateofBooking, dato.dateOfReturn);
                     puntero = puntero.siguiente;
                 } while (puntero != null);
-
             }
-
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Gestor_De_Biblioteca_T3
                 UserManager.CurrentUser = user;
                 BookManager.CurrentBooks = new Arbol();
                 ReserveManager.CurrentReserves = new Cola();
+                RegistroManager.CurrentRegister = new Lista();
                 Hide();
                 formHome.Show();
             }

@@ -7,6 +7,7 @@ namespace Gestor_De_Biblioteca_T3
     public class Arbol
     {
         public NodoArbol raiz;
+        public int size = 0;
 
         private string filePath = "data-tree-books.txt";
 
@@ -31,7 +32,9 @@ namespace Gestor_De_Biblioteca_T3
                                 dato[1],
                                 dato[2],
                                 dato[3],
-                                dato[4]
+                                dato[4],
+                                dato[5],
+                                dato[6]
                             ));
                     }
                 }
@@ -42,7 +45,7 @@ namespace Gestor_De_Biblioteca_T3
         {
             using (StreamWriter sw = File.AppendText(filePath))
             {
-                sw.WriteLine($"{dato.Id}|{dato.Title}|{dato.Description}|{dato.Author}|{dato.Publication}");
+                sw.WriteLine($"{dato.Id}|{dato.Title}|{dato.Description}|{dato.Author}|{dato.Publication}|{dato.Cover}|{dato.Gender}");
             }
         }
 
@@ -89,6 +92,7 @@ namespace Gestor_De_Biblioteca_T3
             if (r == null)
             {
                 r = new NodoArbol(dato);
+                size++;
             }
             else
             {
@@ -113,7 +117,7 @@ namespace Gestor_De_Biblioteca_T3
             if (r != null)
             {
                 em = r.dato;
-                if (value.Contains(em.Title)) return em;
+                if (em.Title.Contains(value)) return em;
                 if (string.Compare(value, em.Title, StringComparison.OrdinalIgnoreCase) < 0)
                     return SearchByTitle(value, r.izq);
                 else
@@ -127,7 +131,7 @@ namespace Gestor_De_Biblioteca_T3
         {
             if (r != null)
             {
-                DGV.Rows.Add(r.dato.Id, r.dato.Title, r.dato.Description, r.dato.Author, r.dato.Publication);
+                DGV.Rows.Add(r.dato.Id, r.dato.Title, r.dato.Description, r.dato.Author, r.dato.Publication, r.dato.Cover, r.dato.Gender);
                 PostOrden(r.der, DGV);
                 PostOrden(r.izq, DGV);
             }

@@ -38,6 +38,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePickerAddBook = new System.Windows.Forms.DateTimePicker();
             this.btnAddBook = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.coverInput = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.genderInput = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -106,7 +110,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 222);
+            this.label5.Location = new System.Drawing.Point(26, 337);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 17);
             this.label5.TabIndex = 10;
@@ -114,14 +118,14 @@
             // 
             // dateTimePickerAddBook
             // 
-            this.dateTimePickerAddBook.Location = new System.Drawing.Point(28, 242);
+            this.dateTimePickerAddBook.Location = new System.Drawing.Point(26, 366);
             this.dateTimePickerAddBook.Name = "dateTimePickerAddBook";
             this.dateTimePickerAddBook.Size = new System.Drawing.Size(288, 20);
             this.dateTimePickerAddBook.TabIndex = 11;
             // 
             // btnAddBook
             // 
-            this.btnAddBook.Location = new System.Drawing.Point(85, 334);
+            this.btnAddBook.Location = new System.Drawing.Point(86, 392);
             this.btnAddBook.Name = "btnAddBook";
             this.btnAddBook.Size = new System.Drawing.Size(166, 46);
             this.btnAddBook.TabIndex = 12;
@@ -129,11 +133,49 @@
             this.btnAddBook.UseVisualStyleBackColor = true;
             this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(26, 224);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 17);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Portada";
+            // 
+            // coverInput
+            // 
+            this.coverInput.Location = new System.Drawing.Point(29, 244);
+            this.coverInput.Name = "coverInput";
+            this.coverInput.Size = new System.Drawing.Size(287, 20);
+            this.coverInput.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(25, 273);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 17);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Género";
+            // 
+            // genderInput
+            // 
+            this.genderInput.Location = new System.Drawing.Point(28, 293);
+            this.genderInput.Name = "genderInput";
+            this.genderInput.Size = new System.Drawing.Size(287, 20);
+            this.genderInput.TabIndex = 15;
+            // 
             // FormAgregarBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(343, 450);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.genderInput);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.coverInput);
             this.Controls.Add(this.btnAddBook);
             this.Controls.Add(this.dateTimePickerAddBook);
             this.Controls.Add(this.label5);
@@ -148,8 +190,12 @@
             this.Text = "FormAgregarBook";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox coverInput;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox genderInput;
 
         #endregion
 

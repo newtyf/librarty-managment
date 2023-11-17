@@ -80,6 +80,8 @@
     <Compile Include="NodoLista.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registro.cs" />
+    <Compile Include="RegistroManager.cs" />
     <Compile Include="Reserve.cs" />
     <Compile Include="ReserveManager.cs" />
     <Compile Include="User.cs" />
@@ -122,8 +124,14 @@
     <Content Include="data-tree-books.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="logs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="reserves.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="users.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
