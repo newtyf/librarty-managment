@@ -154,7 +154,7 @@ namespace Gestor_De_Biblioteca_T3
 
                 if (book == null)
                 {
-                    Registro log = new Registro($"Se reservo un libro: {inputTitleSearch.Text} ALERT: NO SE ENCONTRO");
+                    Registro log = new Registro($"Se busco un libro: {inputTitleSearch.Text} ALERT: NO SE ENCONTRO");
                     registro.InsertarAlFinal(log);
                     registro.SaveInPlaneFile(log);
                     registro.imprimirDGV(registerDGV);
@@ -187,7 +187,7 @@ namespace Gestor_De_Biblioteca_T3
                         bookImage.Image = image;
                         SelectedBook = book;
                     }
-                    Registro log = new Registro($"Se reservo un libro: {inputTitleSearch.Text} SE ENCONTRO CORRECTAMENTE");
+                    Registro log = new Registro($"Se busco un libro: {inputTitleSearch.Text} SE ENCONTRO CORRECTAMENTE");
                     registro.InsertarAlFinal(log);
                     registro.SaveInPlaneFile(log);
                     registro.imprimirDGV(registerDGV);
